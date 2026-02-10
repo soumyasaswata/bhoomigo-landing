@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { copy, type Lang } from "./copy";
 
-const PHONE = "9198984516025";
+const PHONE = "918984516025";
 const DISPLAY_PHONE = "89845 16025";
 const WHATSAPP_URL = `https://wa.me/${PHONE}?text=Hi%20BhoomiGo%2C%20I%20need%20construction%20materials%20in%20Odisha.%20Delivery%20location%3A%20____.%20Material%3A%20____.%20Quantity%3A%20____.%20Date%3A%20____.`;
 const CALL_URL = `tel:+${PHONE}`;
