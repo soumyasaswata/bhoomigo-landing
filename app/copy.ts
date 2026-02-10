@@ -37,7 +37,7 @@ export const copy = {
     serviceAreas: "Service areas",
     serviceAreasLead: "We currently deliver only within Odisha.",
     serviceAreasDetail:
-      "Examples: Keonjhar, Sundargarh, Angul, Cuttack, Bhubaneswar and nearby areas. If you're in Odisha, message us with your location and we'll confirm if we can serve you.",
+      "Examples: Keonjhar, Sundargarh, Angul, Cuttack, Bhubaneswar, Jajapur and nearby areas. If you're in Odisha, message us with your location and we'll confirm if we can serve you.",
     businessHours:
       "Business hours: Mon–Sat, 8 AM – 6 PM (IST). We'll respond to messages as soon as we can.",
     disclaimer:
@@ -83,7 +83,7 @@ export const copy = {
     serviceAreas: "ସେବା କ୍ଷେତ୍ର",
     serviceAreasLead: "ଆମେ ବର୍ତ୍ତମାନ କେବଳ ଓଡ଼ିଶା ଭିତରେ ଯୋଗାଣ କରୁ।",
     serviceAreasDetail:
-      "ଉଦାହରଣ: କେଉଁଝର, ସୁନ୍ଦରଗଡ଼, ଅନୁଗୋଳ, କଟକ, ଭୁବନେଶ୍ୱର ଓ ନିକଟବର୍ତ୍ତୀ ଅଞ୍ଚଳ। ଯଦି ଆପଣ ଓଡ଼ିଶାରେ ଅଛନ୍ତି, ଆପଣଙ୍କ ଅବସ୍ଥିତି ଲେଖି ପଠାନ୍ତୁ, ଆମେ ସେବା କରିପାରିବା କି ନାହିଁ କହିଦେବୁ।",
+      "ଉଦାହରଣ: କେଉଁଝର, ସୁନ୍ଦରଗଡ଼, ଅନୁଗୋଳ, କଟକ, ଭୁବନେଶ୍ୱର, ଯାଜପୁର ଓ ନିକଟବର୍ତ୍ତୀ ଅଞ୍ଚଳ। ଯଦି ଆପଣ ଓଡ଼ିଶାରେ ଅଛନ୍ତି, ଆପଣଙ୍କ ଅବସ୍ଥିତି ଲେଖି ପଠାନ୍ତୁ, ଆମେ ସେବା କରିପାରିବା କି ନାହିଁ କହିଦେବୁ।",
     businessHours:
       "କାମ ଘଣ୍ଟା: ସୋମ–ଶନି, ସକାଳ ୮–ସନ୍ଧ୍ୟା ୬ (IST)। ଯଥାଶୀଘ୍ର ମେସେଜ୍ ର ଉତ୍ତର ଦେବୁ।",
     disclaimer:
