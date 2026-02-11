@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "stone chips Odisha",
     "aggregates delivery Odisha",
     "stone dust Bhubaneswar",
+    "crusher Odisha",
     "crusher materials Cuttack",
     "building materials Keonjhar",
     "BhoomiGo",
