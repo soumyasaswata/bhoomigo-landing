@@ -86,19 +86,19 @@ export default function LandingContent() {
               <SupplyCard
                 title={t.stoneChipsTitle}
                 description={t.stoneChipsDesc}
-                image="https://images.unsplash.com/photo-1744210257965-f397b3212c9b?w=600&q=80"
+                image="/stone_image.jpg"
                 imageAlt="Stone chips and aggregates"
               />
               <SupplyCard
                 title={t.stoneDustTitle}
                 description={t.stoneDustDesc}
-                image="https://images.unsplash.com/photo-1760131185787-597c462d6196?w=600&q=80"
+                image="/dust_image.jpg"
                 imageAlt="Stone dust / quarry dust"
               />
               <SupplyCard
                 title={t.bulkSupplyTitle}
                 description={t.bulkSupplyDesc}
-                image="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80"
+                image="/bulk_image.jpg"
                 imageAlt="Bulk supply for projects"
               />
             </div>
