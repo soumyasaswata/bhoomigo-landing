@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     "crusher Odisha",
     "crusher materials Cuttack",
     "building materials Keonjhar",
+    "construction materials Baleswar",
+    "building materials Bhadrak",
     "BhoomiGo",
   ],
   openGraph: {
@@ -39,6 +41,12 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   alternates: { canonical: SITE_URL },
+  other: {
+    "geo.region": "IN-OR",
+    "geo.placename": "Dharmasala",
+    "geo.position": "20.7706;86.1497",
+    ICBM: "20.7706, 86.1497",
+  },
 };
 
 const localBusinessJsonLd = {
@@ -49,10 +57,49 @@ const localBusinessJsonLd = {
     "Construction materials delivered in Odisha: stone chips, stone dust, aggregates. Direct from crushers, transparent pricing. WhatsApp or call to order.",
   url: SITE_URL,
   telephone: "+91-8984516025",
-  areaServed: {
-    "@type": "State",
-    name: "Odisha",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "At/Po - Aruha, Block - Dharmasala",
+    addressLocality: "Jajpur",
+    addressRegion: "Odisha",
+    postalCode: "755024",
+    addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 20.7706,
+    longitude: 86.1497,
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Bhubaneswar",
+    },
+    {
+      "@type": "City",
+      name: "Cuttack",
+    },
+    {
+      "@type": "City",
+      name: "Jajpur",
+    },
+    {
+      "@type": "City",
+      name: "Keonjhar",
+    },
+    {
+      "@type": "City",
+      name: "Angul",
+    },
+    {
+      "@type": "City",
+      name: "Baleswar",
+    },
+    {
+      "@type": "City",
+      name: "Bhadrak",
+    },
+  ],
   priceRange: "₹₹",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
