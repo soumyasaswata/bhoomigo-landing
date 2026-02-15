@@ -11,7 +11,7 @@ export const copy = {
     whatWeSupplySub: "Quality aggregates and bulk materials for your projects.",
     stoneChipsTitle: "Stone Chips (Aggregates)",
     stoneChipsDesc:
-      "Graded stone chips in different sizes for concrete, road base, and filling. Sourced from verified crushers.",
+      "Graded stone chips from Chandikhole & Aruha mines. Different sizes for concrete, road base, and filling.",
     stoneDustTitle: "Stone Dust / Quarry Dust",
     stoneDustDesc:
       "Fine stone dust for plastering, block work, and as a stabilising layer. Consistent quality, no adulteration.",
@@ -37,7 +37,7 @@ export const copy = {
     serviceAreas: "Service areas",
     serviceAreasLead: "We currently deliver only within Odisha.",
     serviceAreasDetail:
-      "Examples: Cuttack, Bhubaneswar, Jajapur, Keonjhar, Angul, Baleswar, Bhadrak and nearby areas. If you're in Odisha, message us with your location and we'll confirm if we can serve you.",
+      "Examples: Cuttack, Bhubaneswar, Jajapur, Keonjhar, Angul, Baleswar, Bhadrak, Chandikhole and nearby areas. If you're in Odisha, message us with your location and we'll confirm if we can serve you.",
     businessHours:
       "Business hours: Mon–Sat, 8 AM – 6 PM (IST). We'll respond to messages as soon as we can.",
     disclaimer:
@@ -57,7 +57,7 @@ export const copy = {
     whatWeSupplySub: "ଆପଣଙ୍କ ପ୍ରୋଜେକ୍ଟ ପାଇଁ ଉଚ୍ଚ ମାନର ଆଗ୍ରିଗେଟ୍ ଓ ବଲ୍କ ସାମଗ୍ରୀ ।",
     stoneChipsTitle: "ପଥର ଚିପ୍ସ୍ (ଆଗ୍ରିଗେଟ୍)",
     stoneChipsDesc:
-      "କଂକ୍ରିଟ୍, ରୋଡ୍ ବେସ୍ ଓ ଭର୍ତ୍ତି ପାଇଁ ବିଭିନ୍ନ ସାଇଜ୍ ର ପଥର ଚିପ୍ସ୍। ଯାଞ୍ଚିତ କ୍ରଶର୍ମାନଙ୍କଠାରୁ ।",
+      "ଚଣ୍ଡିଖୋଲ ଏବଂ ଅରୁହା ଖଣିରୁ ବିଭିନ୍ନ ସାଇଜ୍ ର ପଥର ଚିପ୍ସ୍। କଂକ୍ରିଟ୍ ଓ ରୋଡ୍ କାମ ପାଇଁ ।",
     stoneDustTitle: "ପଥର ଧୂଳି / ଖଣି ଧୂଳି",
     stoneDustDesc:
       "ପ୍ଲାଷ୍ଟରିଂ, ବ୍ଲକ୍ କାମ ଓ ସ୍ଥିରୀକରଣ ପାଇଁ ଫାଇନ୍ ପଥର ଧୂଳି। ସ୍ଥିର ମାନ, ମିଶ୍ରଣ ନାହିଁ।",
@@ -83,7 +83,7 @@ export const copy = {
     serviceAreas: "ସେବା କ୍ଷେତ୍ର",
     serviceAreasLead: "ଆମେ ବର୍ତ୍ତମାନ କେବଳ ଓଡ଼ିଶା ଭିତରେ ଯୋଗାଣ କରୁ ।",
     serviceAreasDetail:
-      "ଉଦାହରଣ: କଟକ, ଭୁବନେଶ୍ୱର, ଯାଜପୁର, କେଉଁଝର, ଅନୁଗୋଳ, ବାଲେଶ୍ୱର, ଭଦ୍ରକ ଓ ନିକଟବର୍ତ୍ତୀ ଅଞ୍ଚଳ। ଯଦି ଆପଣ ଓଡ଼ିଶାରେ ଅଛନ୍ତି, ଆପଣଙ୍କ ଅବସ୍ଥିତି ଲେଖି ପଠାନ୍ତୁ, ଆମେ ସେବା କରିପାରିବା କି ନାହିଁ କହିଦେବୁ ।",
+      "ଉଦାହରଣ: କଟକ, ଭୁବନେଶ୍ୱର, ଯାଜପୁର, କେଉଁଝର, ଅନୁଗୋଳ, ବାଲେଶ୍ୱର, ଭଦ୍ରକ, ଚଣ୍ଡିଖୋଲ ଓ ନିକଟବର୍ତ୍ତୀ ଅଞ୍ଚଳ। ଯଦି ଆପଣ ଓଡ଼ିଶାରେ ଅଛନ୍ତି, ଆପଣଙ୍କ ଅବସ୍ଥିତି ଲେଖି ପଠାନ୍ତୁ, ଆମେ ସେବା କରିପାରିବା କି ନାହିଁ କହିଦେବୁ ।",
     businessHours:
       "କାମ ଘଣ୍ଟା: ସୋମ–ଶନି, ସକାଳ ୮–ସନ୍ଧ୍ୟା ୬ (IST)। ଯଥାଶୀଘ୍ର ମେସେଜ୍ ର ଉତ୍ତର ଦେବୁ ।",
     disclaimer:

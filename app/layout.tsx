@@ -18,14 +18,19 @@ export const metadata: Metadata = {
     "building materials Keonjhar",
     "construction materials Baleswar",
     "building materials Bhadrak",
+    "stone chips Chandikhole",
+    "stone dust Chandikhole",
+    "stone chips Aruha",
+    "stone dust Aruha",
+    "crusher Chandikhole",
     "BhoomiGo",
   ],
   openGraph: {
     url: SITE_URL,
     siteName: "BhoomiGo",
-    title: "BhoomiGo | Construction Materials in Odisha",
+    title: "BhoomiGo | Stone Chips & Dust from Chandikhole",
     description:
-      "Stone chips, stone dust & aggregates delivered in Odisha. Reliable delivery, no brokerage. WhatsApp or call to place your order.",
+      "High-quality stone chips, stone dust & aggregates sourced directly from Chandikhole & Aruha crushers. Delivered across Odisha. Call to order.",
     type: "website",
     locale: "en_IN",
   },
@@ -98,6 +103,10 @@ const localBusinessJsonLd = {
     {
       "@type": "City",
       name: "Bhadrak",
+    },
+    {
+      "@type": "City",
+      name: "Chandikhole",
     },
   ],
   priceRange: "₹₹",
