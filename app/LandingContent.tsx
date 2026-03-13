@@ -21,13 +21,13 @@ export default function LandingContent() {
     <>
       <main className="min-h-screen">
         {/* Brand Header - fixed top left */}
-        <div className="fixed top-4 left-4 z-40 bg-white/95 backdrop-blur-sm rounded-2xl p-2 pr-4 shadow-sm border border-stone-200 flex items-center">
-          <Link href="/" className="relative h-12 w-48 block">
+        <div className="fixed top-4 left-4 z-40 bg-white/95 backdrop-blur-sm rounded-2xl p-2 px-3 shadow-md border border-stone-200/60 flex items-center">
+          <Link href="/" className="relative h-9 w-[110px] sm:h-10 sm:w-[122px] block">
             <Image
               src="/logo_full.png"
               alt={`BhoomiGo - ${t.slogan}`}
               fill
-              className="object-contain object-left"
+              className="object-contain"
               priority
             />
           </Link>
