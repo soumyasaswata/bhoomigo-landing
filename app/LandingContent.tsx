@@ -21,18 +21,16 @@ export default function LandingContent() {
     <>
       <main className="min-h-screen">
         {/* Brand Header - fixed top left */}
-        <div className="fixed top-4 left-4 z-40 bg-white/95 backdrop-blur-sm rounded-2xl p-3 pr-5 shadow-sm border border-stone-200 flex items-center gap-3">
-          <div className="w-10 h-10 flex items-center justify-center bg-earth-900 rounded-xl text-amber-500 shadow-inner">
-            <TruckIcon className="w-7 h-7" />
-          </div>
-          <div className="flex flex-col">
-            <h1 className="text-xl font-bold tracking-tight text-earth-900 leading-none">
-              Bhoomi<span className="text-amber-500">Go</span>
-            </h1>
-            <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mt-1.5 opacity-80">
-              {t.slogan}
-            </p>
-          </div>
+        <div className="fixed top-4 left-4 z-40 bg-white/95 backdrop-blur-sm rounded-2xl p-2 pr-4 shadow-sm border border-stone-200 flex items-center">
+          <Link href="/" className="relative h-12 w-48 block">
+            <Image
+              src="/logo_full.png"
+              alt={`BhoomiGo - ${t.slogan}`}
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </Link>
         </div>
 
         {/* Language toggle - fixed top right */}
@@ -206,14 +204,6 @@ export default function LandingContent() {
         <WhatsAppIcon className="w-8 h-8" />
       </a>
     </>
-  );
-}
-
-function TruckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM13 12H6V6h7v6zM17.3 8.5l2.1 3H15V8.5h2.3z" />
-    </svg>
   );
 }
 
