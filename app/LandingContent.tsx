@@ -7,8 +7,11 @@ import { copy, type Lang } from "./copy";
 
 const PHONE = "918984516025";
 const DISPLAY_PHONE = "89845 16025";
-const WHATSAPP_URL = `https://wa.me/${PHONE}?text=Hi%20BhoomiGo%2C%20I%20need%20construction%20materials%20in%20Odisha.%20Delivery%20location%3A%20____.%20Material%3A%20____.%20Quantity%3A%20____.%20Date%3A%20____.`;
 const CALL_URL = `tel:+${PHONE}`;
+
+const getWhatsAppUrl = (template: string) => {
+  return `https://wa.me/${PHONE}?text=${encodeURIComponent(template)}`;
+};
 
 export default function LandingContent() {
   const [lang, setLang] = useState<Lang>("en");
@@ -54,7 +57,7 @@ export default function LandingContent() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href={WHATSAPP_URL}
+                href={getWhatsAppUrl(t.whatsAppTemplate)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-[#25D366] text-white hover:bg-[#20bd5a] transition shadow-lg"
@@ -157,7 +160,7 @@ export default function LandingContent() {
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href={WHATSAPP_URL}
+                href={getWhatsAppUrl(t.whatsAppTemplate)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#25D366] hover:underline"
@@ -179,7 +182,7 @@ export default function LandingContent() {
 
       {/* Sticky WhatsApp */}
       <a
-        href={WHATSAPP_URL}
+        href={getWhatsAppUrl(t.whatsAppTemplate)}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20bd5a] transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"

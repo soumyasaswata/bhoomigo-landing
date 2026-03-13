@@ -46,6 +46,7 @@ export const copy = {
     translateToOdia: "ଓଡ଼ିଆରେ ଦେଖନ୍ତୁ",
     translateToEnglish: "English",
     chatWhatsApp: "Chat on WhatsApp",
+    whatsAppTemplate: "Hi BhoomiGo, I need construction materials in Odisha.\n\nDelivery Location: ____\nAddress: ____\nMaterial: ____\nQuantity: ____\nDate: ____",
   },
   odia: {
     servingOdisha: "ଓଡ଼ିଶାରେ ସେବା",
@@ -92,5 +93,6 @@ export const copy = {
     translateToOdia: "ଓଡ଼ିଆରେ ଦେଖନ୍ତୁ",
     translateToEnglish: "English",
     chatWhatsApp: "ହ୍ୱାଟ୍ସଆପ୍ ରେ ଚାଟ୍ କରନ୍ତୁ",
+    whatsAppTemplate: "ନମସ୍ତେ ଭୂମିଗୋ, ମୋତେ ଓଡ଼ିଶାରେ ନିର୍ମାଣ ସାମଗ୍ରୀ ଦରକାର।\n\nଡେଲିଭରି ସ୍ଥାନ: ____\nଠିକଣା: ____\nସାମଗ୍ରୀ: ____\nପରିମାଣ: ____\nତାରିଖ: ____",
   },
 } as const;
