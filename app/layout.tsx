@@ -46,6 +46,11 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   alternates: { canonical: SITE_URL },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   other: {
     "geo.region": "IN-OR",
     "geo.placename": "Dharmasala",
