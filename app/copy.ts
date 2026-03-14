@@ -52,7 +52,7 @@ export const copy = {
   odia: {
     servingOdisha: "ଓଡ଼ିଶାରେ ସେବା",
     heroTitle: "ଓଡ଼ିଶାରେ ଆପଣଙ୍କ ସାଇଟ୍ ପାଇଁ ନିର୍ମାଣ ସାମଗ୍ରୀ ପହଞ୍ଚାଇ ଦେଉଛୁ",
-    slogan: "ବେଷ୍ଟ୍ ନିର୍ମାଣ (Build Better).",
+    slogan: "Build Better.",
     heroSub: "କ୍ରଶରର୍ମାନଙ୍କଠାରୁ ପ୍ରତ୍ୟକ୍ଷ, ସ୍ପଷ୍ଟ ମୂଲ୍ୟ, ବିଶ୍ୱାସଯୋଗ୍ୟ ବିତରଣ ।",
     orderWhatsApp: "ହ୍ୱାଟ୍ସଆପ୍ ରେ ଅର୍ଡର କରନ୍ତୁ",
     callUs: "ଆମକୁ ଫୋନ୍ କରନ୍ତୁ",
