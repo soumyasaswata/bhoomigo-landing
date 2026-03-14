@@ -20,30 +20,41 @@ export default function LandingContent() {
   return (
     <>
       <main className="min-h-screen">
-        {/* Brand Header - fixed top left */}
-        <div className="fixed top-4 left-4 z-40 bg-white/95 backdrop-blur-sm rounded-2xl p-2 px-3 shadow-md border border-stone-200/60 flex items-center">
-          <Link href="/" className="relative h-9 w-[110px] sm:h-10 sm:w-[122px] block">
-            <Image
-              src="/logo_full.png"
-              alt={`BhoomiGo - ${t.slogan}`}
-              fill
-              className="object-contain"
-              priority
-            />
-          </Link>
-        </div>
+        {/* Unified Premium Header */}
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200/60 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            {/* Logo Section */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative h-12 w-12 sm:h-14 sm:w-14 overflow-hidden rounded-xl border border-stone-200 bg-white p-1 transition-transform group-hover:scale-105 shadow-sm">
+                <Image
+                  src="/logo_full.png"
+                  alt={`BhoomiGo`}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl sm:text-2xl font-bold text-earth-900 tracking-tight leading-none">
+                  BhoomiGo
+                </span>
+                <span className="text-[10px] sm:text-[11px] font-medium text-amber-600 uppercase tracking-widest mt-0.5">
+                  {t.slogan}
+                </span>
+              </div>
+            </Link>
 
-        {/* Language toggle - fixed top right */}
-        <div className="fixed top-4 right-4 z-40">
-          <button
-            type="button"
-            onClick={() => setLang(lang === "en" ? "odia" : "en")}
-            className="rounded-full bg-white/95 shadow-md px-4 py-2.5 text-sm font-medium text-earth-900 hover:bg-white border border-stone-200 transition"
-            aria-label={lang === "en" ? "Translate to Odia" : "View in English"}
-          >
-            {lang === "en" ? t.translateToOdia : t.translateToEnglish}
-          </button>
-        </div>
+            {/* Language Toggle */}
+            <button
+              type="button"
+              onClick={() => setLang(lang === "en" ? "odia" : "en")}
+              className="rounded-xl bg-earth-900 px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-earth-800 transition-all shadow-md active:scale-95"
+              aria-label={lang === "en" ? "Translate to Odia" : "View in English"}
+            >
+              {lang === "en" ? t.translateToOdia : t.translateToEnglish}
+            </button>
+          </div>
+        </header>
 
         {/* Hero */}
         <section className="relative min-h-[85vh] flex flex-col justify-end overflow-hidden bg-earth-900">
