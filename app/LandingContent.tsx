@@ -70,6 +70,15 @@ export default function LandingContent() {
             <div className="absolute inset-0 bg-earth-900/70" />
           </div>
           <div className="relative z-10 px-4 sm:px-6 lg:px-8 pb-16 pt-32 text-white max-w-4xl mx-auto w-full text-center">
+            {/* Native Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-200 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              {(t as any).nativeBadge}
+            </div>
+            
             <p className="text-sm sm:text-base font-medium text-amber-200/90 uppercase tracking-wider mb-3">
               {t.servingOdisha}
             </p>
@@ -128,6 +137,39 @@ export default function LandingContent() {
                 image="/bulk_image.jpg"
                 imageAlt="Bulk supply for projects"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Authenticity & Trust Section */}
+        <section className="py-16 bg-earth-900 text-white border-y border-white/5">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">{(t as any).trustTitle}</h2>
+              <p className="text-white/70 max-w-2xl mx-auto">{(t as any).trustSub}</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-6">
+                  <CameraIcon className="w-6 h-6 text-amber-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{(t as any).livePhotosTitle}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{(t as any).livePhotosDesc}</p>
+              </div>
+              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-6">
+                  <ScaleIcon className="w-6 h-6 text-amber-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{(t as any).verifiedWeightTitle}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{(t as any).verifiedWeightDesc}</p>
+              </div>
+              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-6">
+                  <HeartIcon className="w-6 h-6 text-amber-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{(t as any).localRootsTitle}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{(t as any).localRootsDesc}</p>
+              </div>
             </div>
           </div>
         </section>
@@ -306,6 +348,31 @@ function CheckIcon({ className }: { className?: string }) {
       aria-hidden
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+function CameraIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  );
+}
+
+function ScaleIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+    </svg>
+  );
+}
+
+function HeartIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
     </svg>
   );
 }
