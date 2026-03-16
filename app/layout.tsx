@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "crusher Chandikhole",
     "BhoomiGo",
   ],
-  openGraph: {
+    openGraph: {
     url: SITE_URL,
     siteName: "BhoomiGo",
     title: "BhoomiGo | Stone Chips & Dust from Chandikhole",
@@ -33,6 +33,14 @@ export const metadata: Metadata = {
       "High-quality stone chips, stone dust & aggregates sourced directly from Chandikhole & Aruha crushers. Delivered across Odisha. Call to order.",
     type: "website",
     locale: "en_IN",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BhoomiGo - Build Better",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

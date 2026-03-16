@@ -94,12 +94,14 @@ export default function LandingContent() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-[#25D366] text-white hover:bg-[#20bd5a] transition shadow-lg"
+                id="hero-whatsapp-btn"
               >
                 <WhatsAppIcon className="w-6 h-6" />
                 {t.orderWhatsApp}
               </Link>
               <Link
                 href={CALL_URL}
+                id="hero-call-btn"
                 className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-white text-earth-900 hover:bg-gray-100 transition shadow-lg"
               >
                 <CallIcon className="w-5 h-5" />
@@ -230,13 +232,17 @@ export default function LandingContent() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#25D366] hover:underline"
+                id="footer-whatsapp-link"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 WhatsApp
               </Link>
-              <Link href={CALL_URL} className="inline-flex items-center gap-2 hover:underline">
+              <Link href={CALL_URL} id="footer-call-link" className="inline-flex items-center gap-2 hover:underline">
                 <CallIcon className="w-5 h-5" />
                 +91 {DISPLAY_PHONE}
+              </Link>
+              <Link href="/privacy" className="text-white/40 hover:text-white/60 hover:underline">
+                Privacy Policy
               </Link>
             </div>
             <p className="text-white/80 text-sm">{t.businessHours}</p>
@@ -253,6 +259,7 @@ export default function LandingContent() {
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20bd5a] transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
         aria-label={t.chatWhatsApp}
+        id="sticky-whatsapp-btn"
       >
         <WhatsAppIcon className="w-8 h-8" />
       </a>
