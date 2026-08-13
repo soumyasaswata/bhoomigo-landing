@@ -13,9 +13,37 @@ const getWhatsAppUrl = (template: string) => {
   return `https://wa.me/${PHONE}?text=${encodeURIComponent(template)}`;
 };
 
-export default function LandingContent() {
+type LocationOverride = {
+  city: string;
+  odiaCity: string;
+};
+
+export default function LandingContent({
+  location,
+}: {
+  location?: LocationOverride;
+} = {}) {
   const [lang, setLang] = useState<Lang>("en");
   const t = copy[lang];
+
+  const heroTitle = location
+    ? lang === "en"
+      ? `Construction materials delivered to your site in ${location.city}`
+      : `${location.odiaCity}ରେ ଆପଣଙ୍କ ସାଇଟ୍ ପାଇଁ ନିର୍ମାଣ ସାମଗ୍ରୀ ପହଞ୍ଚାଇ ଦେଉଛୁ`
+    : t.heroTitle;
+
+  const servingLabel = location
+    ? lang === "en"
+      ? `Serving ${location.city}`
+      : `${location.odiaCity}ରେ ସେବା`
+    : t.servingOdisha;
+
+  const whatsAppTemplate = location
+    ? t.whatsAppTemplate.replace(
+        /(Delivery Location:|ଡେଲିଭରି ସ୍ଥାନ:) ____/,
+        (match) => match.replace("____", location.city)
+      )
+    : t.whatsAppTemplate;
 
   return (
     <>
@@ -78,19 +106,19 @@ export default function LandingContent() {
               </span>
               {(t as any).nativeBadge}
             </div>
-            
+
             <p className="text-sm sm:text-base font-medium text-amber-200/90 uppercase tracking-wider mb-3">
-              {t.servingOdisha}
+              {servingLabel}
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              {t.heroTitle}
+              {heroTitle}
             </h1>
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8">
               {t.heroSub}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href={getWhatsAppUrl(t.whatsAppTemplate)}
+                href={getWhatsAppUrl(whatsAppTemplate)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-[#25D366] text-white hover:bg-[#20bd5a] transition shadow-lg"
@@ -217,7 +245,11 @@ export default function LandingContent() {
               {t.serviceAreas}
             </h2>
             <p className="text-lg text-earth-800 mb-2">
-              {t.serviceAreasLead}
+              {location
+                ? lang === "en"
+                  ? `${servingLabel} & across Odisha.`
+                  : `${servingLabel} ଏବଂ ଓଡ଼ିଶା ସାରା।`
+                : t.serviceAreasLead}
             </p>
             <p className="text-earth-800/90">{t.serviceAreasDetail}</p>
           </div>
@@ -228,7 +260,7 @@ export default function LandingContent() {
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href={getWhatsAppUrl(t.whatsAppTemplate)}
+                href={getWhatsAppUrl(whatsAppTemplate)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#25D366] hover:underline"
@@ -254,7 +286,7 @@ export default function LandingContent() {
 
       {/* Sticky WhatsApp */}
       <a
-        href={getWhatsAppUrl(t.whatsAppTemplate)}
+        href={getWhatsAppUrl(whatsAppTemplate)}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20bd5a] transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
