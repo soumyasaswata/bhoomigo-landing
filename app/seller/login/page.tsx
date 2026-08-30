@@ -25,7 +25,7 @@ declare global {
 
 export default function SellerLoginPage() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -72,7 +72,7 @@ export default function SellerLoginPage() {
       access?: string;
       refresh?: string;
       error?: string;
-    }>("/api/auth/login/", { method: "POST", body: { username, password, user_type: "seller" } });
+    }>("/api/auth/login/", { method: "POST", body: { email, password, user_type: "seller" } });
 
     setLoading(false);
 
@@ -100,11 +100,12 @@ export default function SellerLoginPage() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <label className="block">
-          <span className="text-sm text-earth-800">Username</span>
+          <span className="text-sm text-earth-800">Email</span>
           <input
+            type="email"
             required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
           />
         </label>
