@@ -72,15 +72,26 @@ export default function LandingContent({
               </div>
             </Link>
 
-            {/* Language Toggle */}
-            <button
-              type="button"
-              onClick={() => setLang(lang === "en" ? "odia" : "en")}
-              className="rounded-xl bg-earth-900 px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-earth-800 transition-all shadow-md active:scale-95"
-              aria-label={lang === "en" ? "Translate to Odia" : "View in English"}
-            >
-              {lang === "en" ? t.translateToOdia : t.translateToEnglish}
-            </button>
+            <div className="flex items-center gap-3 sm:gap-5">
+              {/* Supplier entry point - quiet by design, buyer CTAs stay the visual focus */}
+              <Link
+                href="/seller/signup"
+                id="header-supplier-link"
+                className="hidden sm:inline text-xs sm:text-sm font-medium text-earth-800/70 hover:text-earth-900 hover:underline whitespace-nowrap"
+              >
+                {t.supplierNavLink}
+              </Link>
+
+              {/* Language Toggle */}
+              <button
+                type="button"
+                onClick={() => setLang(lang === "en" ? "odia" : "en")}
+                className="rounded-xl bg-earth-900 px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-earth-800 transition-all shadow-md active:scale-95"
+                aria-label={lang === "en" ? "Translate to Odia" : "View in English"}
+              >
+                {lang === "en" ? t.translateToOdia : t.translateToEnglish}
+              </button>
+            </div>
           </div>
         </header>
 
@@ -258,6 +269,17 @@ export default function LandingContent({
         {/* Footer */}
         <footer className="bg-earth-900 text-white py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+              <span className="text-white/70 text-sm">{t.supplierFooterLead}</span>
+              <Link
+                href="/seller/signup"
+                id="footer-supplier-link"
+                className="inline-flex items-center gap-1.5 font-semibold text-amber-400 hover:text-amber-300 hover:underline"
+              >
+                {t.supplierFooterCta}
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
                 href={getWhatsAppUrl(whatsAppTemplate)}
