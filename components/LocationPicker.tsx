@@ -17,10 +17,43 @@ export default function LocationPicker({
   const [locating, setLocating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const [query, setQuery] = useState("");
+  const [searching, setSearching] = useState(false);
+  const [results, setResults] = useState<{ display_name: string; lat: string; lon: string }[]>([]);
+
   // Geolocation/map events return far more decimal precision than the backend's
   // DecimalField(max_digits=9, decimal_places=6) allows - round here, once, for every source.
   function handleChange(newLat: number, newLng: number) {
     onChange(Number(newLat.toFixed(6)), Number(newLng.toFixed(6)));
+  }
+
+  async function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (!query.trim()) return;
+    setSearching(true);
+    setError(null);
+    setResults([]);
+
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=in&q=${encodeURIComponent(query)}`
+      );
+      const data = await res.json();
+      if (data.length === 0) {
+        setError("No matching locations found. Try a different search, or tap the map directly.");
+      }
+      setResults(data);
+    } catch {
+      setError("Search failed. You can tap the map instead.");
+    }
+
+    setSearching(false);
+  }
+
+  function pickResult(r: { display_name: string; lat: string; lon: string }) {
+    handleChange(parseFloat(r.lat), parseFloat(r.lon));
+    setResults([]);
+    setQuery(r.display_name);
   }
 
   function useMyLocation() {
@@ -63,6 +96,38 @@ export default function LocationPicker({
           {locating ? "Locating..." : "Use my current location"}
         </button>
       </div>
+
+      <form onSubmit={handleSearch} className="relative flex gap-2">
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for an address..."
+          className="w-full rounded-md border border-earth-800/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+        />
+        <button
+          type="submit"
+          disabled={searching}
+          className="shrink-0 rounded-md border border-earth-800/20 px-3 py-2 text-sm text-earth-800 hover:bg-earth-800/5 disabled:opacity-50"
+        >
+          {searching ? "Searching..." : "Search"}
+        </button>
+
+        {results.length > 0 && (
+          <ul className="absolute top-full z-[1000] mt-1 w-full rounded-md border border-earth-800/20 bg-white shadow-lg">
+            {results.map((r, i) => (
+              <li key={i}>
+                <button
+                  type="button"
+                  onClick={() => pickResult(r)}
+                  className="block w-full px-3 py-2 text-left text-sm hover:bg-earth-800/5"
+                >
+                  {r.display_name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </form>
 
       <LocationPickerMap lat={lat} lng={lng} onChange={handleChange} />
 
