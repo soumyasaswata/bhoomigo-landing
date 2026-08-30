@@ -17,6 +17,12 @@ export default function LocationPicker({
   const [locating, setLocating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Geolocation/map events return far more decimal precision than the backend's
+  // DecimalField(max_digits=9, decimal_places=6) allows - round here, once, for every source.
+  function handleChange(newLat: number, newLng: number) {
+    onChange(Number(newLat.toFixed(6)), Number(newLng.toFixed(6)));
+  }
+
   function useMyLocation() {
     if (!navigator.geolocation) {
       setError("Your browser doesn't support location.");
@@ -26,7 +32,7 @@ export default function LocationPicker({
     setError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        onChange(pos.coords.latitude, pos.coords.longitude);
+        handleChange(pos.coords.latitude, pos.coords.longitude);
         setLocating(false);
       },
       () => {
@@ -58,7 +64,7 @@ export default function LocationPicker({
         </button>
       </div>
 
-      <LocationPickerMap lat={lat} lng={lng} onChange={onChange} />
+      <LocationPickerMap lat={lat} lng={lng} onChange={handleChange} />
 
       <p className="text-xs text-earth-800/60">
         {lat !== null && lng !== null
