@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -22,6 +22,44 @@ export default function LocationPicker({
   const [query, setQuery] = useState("");
   const [searching, setSearching] = useState(false);
   const [results, setResults] = useState<{ display_name: string; lat: string; lon: string }[]>([]);
+
+  // Editable lat/lng text boxes. Kept as separate string state (not derived directly
+  // from the lat/lng props) so a half-typed value like "20.7" isn't clobbered on every
+  // keystroke - synced from props whenever the coordinate changes from elsewhere
+  // (search, geolocation, map click/drag).
+  const [latInput, setLatInput] = useState(lat !== null ? String(lat) : "");
+  const [lngInput, setLngInput] = useState(lng !== null ? String(lng) : "");
+  const [coordError, setCoordError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLatInput(lat !== null ? String(lat) : "");
+    setLngInput(lng !== null ? String(lng) : "");
+  }, [lat, lng]);
+
+  function commitCoordInputs(nextLatStr: string, nextLngStr: string) {
+    const nextLat = parseFloat(nextLatStr);
+    const nextLng = parseFloat(nextLngStr);
+
+    if (nextLatStr.trim() === "" || nextLngStr.trim() === "") {
+      setCoordError(null);
+      return;
+    }
+    if (Number.isNaN(nextLat) || Number.isNaN(nextLng)) {
+      setCoordError("Latitude and longitude must be numbers.");
+      return;
+    }
+    if (nextLat < -90 || nextLat > 90) {
+      setCoordError("Latitude must be between -90 and 90.");
+      return;
+    }
+    if (nextLng < -180 || nextLng > 180) {
+      setCoordError("Longitude must be between -180 and 180.");
+      return;
+    }
+
+    setCoordError(null);
+    handleChange(nextLat, nextLng);
+  }
 
   // Geolocation/map events return far more decimal precision than the backend's
   // DecimalField(max_digits=9, decimal_places=6) allows - round here, once, for every source.
@@ -131,11 +169,35 @@ export default function LocationPicker({
 
       <LocationPickerMap lat={lat} lng={lng} onChange={handleChange} />
 
+      <div className="grid grid-cols-2 gap-4">
+        <label className="block">
+          <span className="text-xs text-earth-800">Latitude</span>
+          <input
+            value={latInput}
+            onChange={(e) => setLatInput(e.target.value)}
+            onBlur={() => commitCoordInputs(latInput, lngInput)}
+            placeholder="e.g. 20.770600"
+            inputMode="decimal"
+            className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+        </label>
+        <label className="block">
+          <span className="text-xs text-earth-800">Longitude</span>
+          <input
+            value={lngInput}
+            onChange={(e) => setLngInput(e.target.value)}
+            onBlur={() => commitCoordInputs(latInput, lngInput)}
+            placeholder="e.g. 86.149700"
+            inputMode="decimal"
+            className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+        </label>
+      </div>
+
       <p className="text-xs text-earth-800/60">
-        {lat !== null && lng !== null
-          ? `Pinned at ${lat.toFixed(6)}, ${lng.toFixed(6)} - drag the pin or tap the map to adjust.`
-          : "Tap the map or use your current location to set your shop's pin."}
+        {lat === null && "Tap the map, search, or use your current location to set your shop's pin."}
       </p>
+      {coordError && <p className="text-xs text-red-600">{coordError}</p>}
       {error && <p className="text-xs text-red-600">{error}</p>}
     </div>
   );
