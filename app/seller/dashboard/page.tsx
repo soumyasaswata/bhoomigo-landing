@@ -11,15 +11,26 @@ type InventoryItem = {
   description: string;
   sku: string;
   size: string | null;
+  unit: string;
   price: string;
 };
 
 type StockRow = {
   id: number;
   item: number;
-  quantity: number;
+  item_detail: InventoryItem;
+  quantity: string;
   updated_at: string;
 };
+
+const UNIT_OPTIONS = [
+  { value: "kg", label: "Kilogram (kg)" },
+  { value: "ton", label: "Ton" },
+  { value: "bag", label: "Bag" },
+  { value: "piece", label: "Piece" },
+  { value: "sqft", label: "Square Feet" },
+  { value: "cft", label: "Cubic Feet" },
+];
 
 export default function SellerDashboardPage() {
   const router = useRouter();
@@ -33,6 +44,7 @@ export default function SellerDashboardPage() {
     description: "",
     sku: "",
     size: "",
+    unit: "bag",
     price: "",
     zone: "1",
     quantity: "0",
@@ -79,9 +91,10 @@ export default function SellerDashboardPage() {
           description: form.description,
           sku: form.sku,
           size: form.size,
+          unit: form.unit,
           price: form.price,
           zone: Number(form.zone),
-          quantity: Number(form.quantity),
+          quantity: form.quantity,
         },
       }
     );
@@ -99,7 +112,7 @@ export default function SellerDashboardPage() {
       return;
     }
 
-    setForm({ name: "", description: "", sku: "", size: "", price: "", zone: "1", quantity: "0" });
+    setForm({ name: "", description: "", sku: "", size: "", unit: "bag", price: "", zone: "1", quantity: "0" });
     loadInventory();
   }
 
@@ -126,8 +139,15 @@ export default function SellerDashboardPage() {
           <ul className="divide-y divide-earth-800/10 rounded-md border border-earth-800/10">
             {stocks.map((s) => (
               <li key={s.id} className="flex justify-between px-4 py-3">
-                <span>Item #{s.item}</span>
-                <span className="text-earth-800/70">Qty: {s.quantity}</span>
+                <span>
+                  {s.item_detail.name}{" "}
+                  <span className="text-earth-800/50">
+                    (₹{s.item_detail.price}/{s.item_detail.unit})
+                  </span>
+                </span>
+                <span className="text-earth-800/70">
+                  {s.quantity} {s.item_detail.unit}
+                </span>
               </li>
             ))}
           </ul>
@@ -173,9 +193,23 @@ export default function SellerDashboardPage() {
               />
             </label>
           </div>
+          <label className="block">
+            <span className="text-sm text-earth-800">Unit</span>
+            <select
+              value={form.unit}
+              onChange={(e) => update("unit", e.target.value)}
+              className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
+            >
+              {UNIT_OPTIONS.map((u) => (
+                <option key={u.value} value={u.value}>
+                  {u.label}
+                </option>
+              ))}
+            </select>
+          </label>
           <div className="grid grid-cols-2 gap-4">
             <label className="block">
-              <span className="text-sm text-earth-800">Price (₹)</span>
+              <span className="text-sm text-earth-800">Price per {form.unit} (₹)</span>
               <input
                 required
                 type="number"
@@ -186,10 +220,11 @@ export default function SellerDashboardPage() {
               />
             </label>
             <label className="block">
-              <span className="text-sm text-earth-800">Quantity in stock</span>
+              <span className="text-sm text-earth-800">Quantity in stock ({form.unit})</span>
               <input
                 required
                 type="number"
+                step="0.01"
                 value={form.quantity}
                 onChange={(e) => update("quantity", e.target.value)}
                 className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
