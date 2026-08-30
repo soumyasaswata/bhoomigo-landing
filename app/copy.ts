@@ -59,7 +59,8 @@ export const copy = {
     whatsAppTemplate: "Hi BhoomiGo, I need construction materials in Odisha.\n\nDelivery Location: ____\nAddress: ____\nMaterial: ____\nQuantity: ____\nDate: ____",
     supplierNavLink: "For Suppliers",
     supplierFooterLead: "Are you a construction materials supplier?",
-    supplierFooterCta: "Register as a Supplier",
+    supplierFooterCta: "Supplier Login",
+    supplierFooterSignupLink: "New supplier? Register here",
   },
   odia: {
     servingOdisha: "ଓଡ଼ିଶାରେ ସେବା",
@@ -119,6 +120,7 @@ export const copy = {
     whatsAppTemplate: "ନମସ୍ତେ ଭୂମିଗୋ, ମୋତେ ଓଡ଼ିଶାରେ ନିର୍ମାଣ ସାମଗ୍ରୀ ଦରକାର।\n\nଡେଲିଭରି ସ୍ଥାନ: ____\nଠିକଣା: ____\nସାମଗ୍ରୀ: ____\nପରିମାଣ: ____\nତାରିଖ: ____",
     supplierNavLink: "ଯୋଗାଣକାରୀଙ୍କ ପାଇଁ",
     supplierFooterLead: "ଆପଣ ଏକ ନିର୍ମାଣ ସାମଗ୍ରୀ ଯୋଗାଣକାରୀ କି?",
-    supplierFooterCta: "ଯୋଗାଣକାରୀ ଭାବରେ ପଞ୍ଜୀକରଣ କରନ୍ତୁ",
+    supplierFooterCta: "ଯୋଗାଣକାରୀ ଲଗଇନ୍",
+    supplierFooterSignupLink: "ନୂଆ ଯୋଗାଣକାରୀ? ଏଠାରେ ପଞ୍ଜୀକରଣ କରନ୍ତୁ",
   },
 } as const;

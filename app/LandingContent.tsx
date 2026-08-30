@@ -73,9 +73,11 @@ export default function LandingContent({
             </Link>
 
             <div className="flex items-center gap-3 sm:gap-5">
-              {/* Supplier entry point - quiet by design, buyer CTAs stay the visual focus */}
+              {/* Supplier entry point - quiet by design, buyer CTAs stay the visual focus.
+                  Goes to login (not signup) since login already has a small "Register" link,
+                  so a returning seller isn't dropped on a signup form. */}
               <Link
-                href="/seller/signup"
+                href="/seller/login"
                 id="header-supplier-link"
                 className="hidden sm:inline text-xs sm:text-sm font-medium text-earth-800/70 hover:text-earth-900 hover:underline whitespace-nowrap"
               >
@@ -269,15 +271,22 @@ export default function LandingContent({
         {/* Footer */}
         <footer className="bg-earth-900 text-white py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-5 flex flex-col items-center justify-center gap-2">
               <span className="text-white/70 text-sm">{t.supplierFooterLead}</span>
               <Link
-                href="/seller/signup"
-                id="footer-supplier-link"
+                href="/seller/login"
+                id="footer-supplier-login-link"
                 className="inline-flex items-center gap-1.5 font-semibold text-amber-400 hover:text-amber-300 hover:underline"
               >
                 {t.supplierFooterCta}
                 <span aria-hidden="true">&rarr;</span>
+              </Link>
+              <Link
+                href="/seller/signup"
+                id="footer-supplier-signup-link"
+                className="text-xs text-white/50 hover:text-white/70 hover:underline"
+              >
+                {t.supplierFooterSignupLink}
               </Link>
             </div>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
