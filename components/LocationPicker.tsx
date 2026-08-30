@@ -67,8 +67,7 @@ export default function LocationPicker({
     onChange(Number(newLat.toFixed(6)), Number(newLng.toFixed(6)));
   }
 
-  async function handleSearch(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSearch() {
     if (!query.trim()) return;
     setSearching(true);
     setError(null);
@@ -135,15 +134,22 @@ export default function LocationPicker({
         </button>
       </div>
 
-      <form onSubmit={handleSearch} className="relative flex gap-2">
+      <div className="relative flex gap-2">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              handleSearch();
+            }
+          }}
           placeholder="Search for an address..."
           className="w-full rounded-md border border-earth-800/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
         />
         <button
-          type="submit"
+          type="button"
+          onClick={handleSearch}
           disabled={searching}
           className="shrink-0 rounded-md border border-earth-800/20 px-3 py-2 text-sm text-earth-800 hover:bg-earth-800/5 disabled:opacity-50"
         >
@@ -165,7 +171,7 @@ export default function LocationPicker({
             ))}
           </ul>
         )}
-      </form>
+      </div>
 
       <LocationPickerMap lat={lat} lng={lng} onChange={handleChange} />
 
@@ -176,6 +182,7 @@ export default function LocationPicker({
             value={latInput}
             onChange={(e) => setLatInput(e.target.value)}
             onBlur={() => commitCoordInputs(latInput, lngInput)}
+            onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
             placeholder="e.g. 20.770600"
             inputMode="decimal"
             className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
@@ -187,6 +194,7 @@ export default function LocationPicker({
             value={lngInput}
             onChange={(e) => setLngInput(e.target.value)}
             onBlur={() => commitCoordInputs(latInput, lngInput)}
+            onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
             placeholder="e.g. 86.149700"
             inputMode="decimal"
             className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
