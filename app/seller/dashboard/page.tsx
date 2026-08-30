@@ -55,14 +55,27 @@ export default function SellerDashboardPage() {
   const [editError, setEditError] = useState<string | null>(null);
   const [editSubmitting, setEditSubmitting] = useState(false);
 
+  const [locationMissing, setLocationMissing] = useState(false);
+
   useEffect(() => {
     if (!getAccessToken()) {
       router.push("/seller/login");
       return;
     }
     loadInventory();
+    checkLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  async function checkLocation() {
+    const { ok, data } = await apiRequest<{ latitude: string; longitude: string }>(
+      "/api/accounts/profile/seller/",
+      { auth: true }
+    );
+    if (ok) {
+      setLocationMissing(Number(data.latitude) === 0 && Number(data.longitude) === 0);
+    }
+  }
 
   async function loadInventory() {
     setLoading(true);
@@ -186,6 +199,16 @@ export default function SellerDashboardPage() {
           </button>
         </div>
       </div>
+
+      {locationMissing && (
+        <a
+          href="/seller/profile"
+          className="mt-6 flex items-center justify-between rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm hover:bg-amber-100"
+        >
+          <span className="text-amber-800">You haven&apos;t added your shop location yet — buyers can&apos;t find you.</span>
+          <span className="font-medium text-amber-700">Add location →</span>
+        </a>
+      )}
 
       <section className="mt-8">
         {loading ? (

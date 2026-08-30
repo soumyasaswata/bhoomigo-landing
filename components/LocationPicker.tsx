@@ -39,7 +39,15 @@ export default function LocationPicker({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-earth-800">Shop location</span>
+        <span className="text-sm text-earth-800">
+          {lat === null ? (
+            <>
+              Shop location not added yet <span className="text-amber-600">— add it so buyers can find you</span>
+            </>
+          ) : (
+            "Shop location"
+          )}
+        </span>
         <button
           type="button"
           onClick={useMyLocation}

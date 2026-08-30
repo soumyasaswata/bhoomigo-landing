@@ -93,6 +93,8 @@ export default function SellerProfilePage() {
     );
   }
 
+  const hasLocation = Number(profile.latitude) !== 0 || Number(profile.longitude) !== 0;
+
   const field = (key: keyof SellerProfile, label: string, readOnly = false) => (
     <label className="block">
       <span className="text-sm text-earth-800">{label}</span>
@@ -122,8 +124,8 @@ export default function SellerProfilePage() {
         </div>
 
         <LocationPicker
-          lat={profile.latitude ? Number(profile.latitude) : null}
-          lng={profile.longitude ? Number(profile.longitude) : null}
+          lat={hasLocation ? Number(profile.latitude) : null}
+          lng={hasLocation ? Number(profile.longitude) : null}
           onChange={(lat, lng) => {
             update("latitude", String(lat));
             update("longitude", String(lng));
