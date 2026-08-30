@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiRequest, saveTokens } from "@/lib/api";
+import LocationPicker from "@/components/LocationPicker";
 
 export default function SellerSignupPage() {
   const router = useRouter();
+  const [lat, setLat] = useState<number | null>(null);
+  const [lng, setLng] = useState<number | null>(null);
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -41,7 +44,10 @@ export default function SellerSignupPage() {
       refresh?: string;
       error?: string;
       [key: string]: unknown;
-    }>("/api/auth/signup/seller/", { method: "POST", body: form });
+    }>("/api/auth/signup/seller/", {
+      method: "POST",
+      body: lat !== null && lng !== null ? { ...form, latitude: lat, longitude: lng } : form,
+    });
 
     setLoading(false);
 
@@ -113,6 +119,8 @@ export default function SellerSignupPage() {
           {field("pan", "PAN")}
           {field("aadhar", "Aadhar")}
         </div>
+
+        <LocationPicker lat={lat} lng={lng} onChange={(newLat, newLng) => { setLat(newLat); setLng(newLng); }} />
 
         {error && <p className="text-sm text-red-600">{error}</p>}
 
