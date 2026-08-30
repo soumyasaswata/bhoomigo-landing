@@ -50,6 +50,11 @@ export default function SellerDashboardPage() {
     quantity: "0",
   });
 
+  const [editingItemId, setEditingItemId] = useState<number | null>(null);
+  const [editForm, setEditForm] = useState({ price: "", quantity: "" });
+  const [editError, setEditError] = useState<string | null>(null);
+  const [editSubmitting, setEditSubmitting] = useState(false);
+
   useEffect(() => {
     if (!getAccessToken()) {
       router.push("/seller/login");
@@ -116,6 +121,53 @@ export default function SellerDashboardPage() {
     loadInventory();
   }
 
+  function startEdit(s: StockRow) {
+    setEditingItemId(s.item);
+    setEditForm({ price: s.item_detail.price, quantity: s.quantity });
+    setEditError(null);
+  }
+
+  function cancelEdit() {
+    setEditingItemId(null);
+    setEditError(null);
+  }
+
+  async function handleSaveEdit(itemId: number) {
+    setEditError(null);
+    setEditSubmitting(true);
+
+    const { ok, data } = await apiRequest<{ error?: string; [key: string]: unknown }>(
+      `/api/seller/inventory/${itemId}/`,
+      {
+        method: "PATCH",
+        auth: true,
+        body: { price: editForm.price, quantity: editForm.quantity },
+      }
+    );
+
+    setEditSubmitting(false);
+
+    if (!ok) {
+      const firstError =
+        data.error ??
+        Object.values(data)
+          .flat()
+          .find((v) => typeof v === "string") ??
+        "Could not update product.";
+      setEditError(String(firstError));
+      return;
+    }
+
+    setEditingItemId(null);
+    loadInventory();
+  }
+
+  async function handleDelete(itemId: number) {
+    if (!confirm("Remove this product from your listings?")) return;
+    await apiRequest(`/api/seller/inventory/${itemId}/`, { method: "DELETE", auth: true });
+    loadInventory();
+  }
+
   function handleLogout() {
     clearTokens();
     router.push("/seller/login");
@@ -137,19 +189,74 @@ export default function SellerDashboardPage() {
           <p className="text-earth-800/70">No products yet. Add your first one below.</p>
         ) : (
           <ul className="divide-y divide-earth-800/10 rounded-md border border-earth-800/10">
-            {stocks.map((s) => (
-              <li key={s.id} className="flex justify-between px-4 py-3">
-                <span>
-                  {s.item_detail.name}{" "}
-                  <span className="text-earth-800/50">
-                    (₹{s.item_detail.price}/{s.item_detail.unit})
+            {stocks.map((s) =>
+              editingItemId === s.item ? (
+                <li key={s.id} className="px-4 py-3 space-y-3">
+                  <p className="font-medium text-earth-950">{s.item_detail.name}</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <label className="block">
+                      <span className="text-xs text-earth-800">Price per {s.item_detail.unit} (₹)</span>
+                      <input
+                        type="number"
+                        step="0.01"
+                        value={editForm.price}
+                        onChange={(e) => setEditForm((f) => ({ ...f, price: e.target.value }))}
+                        className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-accent"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-xs text-earth-800">Quantity ({s.item_detail.unit})</span>
+                      <input
+                        type="number"
+                        step="0.01"
+                        value={editForm.quantity}
+                        onChange={(e) => setEditForm((f) => ({ ...f, quantity: e.target.value }))}
+                        className="mt-1 w-full rounded-md border border-earth-800/20 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-accent"
+                      />
+                    </label>
+                  </div>
+                  {editError && <p className="text-sm text-red-600">{editError}</p>}
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleSaveEdit(s.item)}
+                      disabled={editSubmitting}
+                      className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50"
+                    >
+                      {editSubmitting ? "Saving..." : "Save"}
+                    </button>
+                    <button
+                      onClick={cancelEdit}
+                      className="rounded-md border border-earth-800/20 px-3 py-1.5 text-sm text-earth-800 hover:bg-earth-800/5"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </li>
+              ) : (
+                <li key={s.id} className="flex items-center justify-between px-4 py-3">
+                  <span>
+                    {s.item_detail.name}{" "}
+                    <span className="text-earth-800/50">
+                      (₹{s.item_detail.price}/{s.item_detail.unit})
+                    </span>
                   </span>
-                </span>
-                <span className="text-earth-800/70">
-                  {s.quantity} {s.item_detail.unit}
-                </span>
-              </li>
-            ))}
+                  <div className="flex items-center gap-4">
+                    <span className="text-earth-800/70">
+                      {s.quantity} {s.item_detail.unit}
+                    </span>
+                    <button onClick={() => startEdit(s)} className="text-sm text-accent hover:underline">
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(s.item)}
+                      className="text-sm text-red-600/80 hover:text-red-600 hover:underline"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </li>
+              )
+            )}
           </ul>
         )}
       </section>
