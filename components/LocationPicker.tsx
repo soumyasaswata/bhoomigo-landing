@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+
 const LocationPickerMap = dynamic(() => import("./LocationPickerMap"), { ssr: false });
 
 export default function LocationPicker({
@@ -35,9 +37,7 @@ export default function LocationPicker({
     setResults([]);
 
     try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=in&q=${encodeURIComponent(query)}`
-      );
+      const res = await fetch(`${API_URL}/api/sellers/geocode/?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       if (data.length === 0) {
         setError("No matching locations found. Try a different search, or tap the map directly.");
