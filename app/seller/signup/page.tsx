@@ -10,7 +10,6 @@ export default function SellerSignupPage() {
   const [lat, setLat] = useState<number | null>(null);
   const [lng, setLng] = useState<number | null>(null);
   const [form, setForm] = useState({
-    username: "",
     password: "",
     email: "",
     phone: "",
@@ -90,13 +89,10 @@ export default function SellerSignupPage() {
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
         <div className="grid grid-cols-2 gap-4">
-          {field("username", "Username")}
+          {field("email", "Email", "email")}
           {field("password", "Password", "password")}
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          {field("email", "Email", "email")}
-          {field("phone", "Phone (10 digits)")}
-        </div>
+        {field("phone", "Phone (10 digits)")}
         {field("address", "Address")}
         <div className="grid grid-cols-3 gap-4">
           {field("city", "City")}
