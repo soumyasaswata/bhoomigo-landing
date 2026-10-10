@@ -18,8 +18,8 @@ export function generateMetadata({
   if (!location) return {};
 
   const pageUrl = `${SITE_URL}/${location.slug}`;
-  const title = `Stone Chips & Stone Dust Delivery in ${location.city}, Odisha | BhoomiGo`;
-  const description = `Stone chips, stone dust & aggregates delivered to your site in ${location.city}. Direct from Chandikhole & Aruha crushers, transparent pricing, verified weight slips. Call or WhatsApp to order.`;
+  const title = `Stone Chips & Stone Dust Delivery in ${location.city}, Odisha (1-Day) | BhoomiGo`;
+  const description = `Stone chips, stone dust & aggregates delivered to your site in ${location.city} within 1 day. Direct from Chandikhole & Aruha crushers, transparent pricing, verified weight slips. Call or WhatsApp to order.`;
 
   return {
     title,

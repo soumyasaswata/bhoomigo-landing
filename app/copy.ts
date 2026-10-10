@@ -35,6 +35,7 @@ export const copy = {
     why2: "Quality verified—we only work with mines known for consistent, high-grade stone materials.",
     why3: "Local expertise—headquartered in Dharmasala, we know every crusher and transporter personally.",
     why4: "Zero hassle—WhatsApp support that understands your local needs and site requirements.",
+    why5: "Fast delivery—most orders reach your site within 1 day of confirmation.",
     trustTitle: "Authenticity you can trust",
     trustSub: "Building in Odisha? We ensure you get exactly what you pay for.",
     livePhotosTitle: "Live Photo Verification",
@@ -44,6 +45,7 @@ export const copy = {
     localRootsTitle: "Unmatched Personal Care",
     localRootsDesc: "As we grow to serve all of Odisha, we treat every order with the personal care it deserves. Your dream home is our priority.",
     nativeBadge: "Native to Odisha",
+    fastDeliveryBadge: "1-Day Delivery",
     serviceAreas: "Service areas",
     serviceAreasLead: "We currently deliver only within Odisha.",
     serviceAreasDetail:
@@ -96,6 +98,7 @@ export const copy = {
     why2: "ମାନ ନିଶ୍ଚିତ—ଆମେ କେବଳ ଭଲ ମାନର ପଥର ସାମଗ୍ରୀ ଯୋଗାଉଥିବା ଖଣି ସହ କାମ କରୁ ।",
     why3: "ସ୍ଥାନୀୟ ଅଭିଜ୍ଞତା—ଧର୍ମଶାଳାରେ ଆମର ମୁଖ୍ୟ କାର୍ଯ୍ୟାଳୟ, ଆମେ ସବୁ କ୍ରଶର୍ ଓ ଟ୍ରାନ୍ସପୋର୍ଟର୍ ଙ୍କୁ ଭଲ ଭାବେ ଜାଣୁ ।",
     why4: "ଝଞ୍ଜଟ ମୁକ୍ତ—ହ୍ୱାଟ୍ସଆପ୍ ସହାୟତା ଯାହା ଆପଣଙ୍କ ସ୍ଥାନୀୟ ଆବଶ୍ୟକତାକୁ ବୁଝେ ।",
+    why5: "ଶୀଘ୍ର ଡେଲିଭରି—ଅଧିକାଂଶ ଅର୍ଡର ନିଶ୍ଚିତ ହେବାର ୧ ଦିନ ମଧ୍ୟରେ ଆପଣଙ୍କ ସାଇଟ୍ ରେ ପହଞ୍ଚିଯାଏ।",
     trustTitle: "ବିଶ୍ୱାସ ଓ ସ୍ୱଚ୍ଛତା",
     trustSub: "ଓଡ଼ିଶାରେ ଘର ତିଆରି କରୁଛନ୍ତି? ଆମେ ନିଶ୍ଚିତ କରୁଛୁ କି ଆପଣ ଯାହା ପାଇଁ ପେମେଣ୍ଟ୍ କରୁଛନ୍ତି ତାହା ହିଁ ପାଉଛନ୍ତି ।",
     livePhotosTitle: "ଲାଇଭ୍ ଫଟୋ ଭେରିଫିକେସନ୍",
@@ -105,6 +108,7 @@ export const copy = {
     localRootsTitle: "ବ୍ୟକ୍ତିଗତ ଦାୟିତ୍ୱବୋଧ",
     localRootsDesc: "ଓଡ଼ିଶାର ସବୁ ସ୍ଥାନରେ ସେବା ଯୋଗାଇବା ପାଇଁ ଆମେ ବଢୁଛୁ, କିନ୍ତୁ ପ୍ରତ୍ୟେକ ଅର୍ଡରକୁ ଆମେ ନିଜର ଭାବି ଯନ୍ତ୍ର ସହ ପହଞ୍ଚାଉଛୁ।",
     nativeBadge: "ଓଡ଼ିଶାର ନିଜସ୍ୱ",
+    fastDeliveryBadge: "୧ ଦିନରେ ଡେଲିଭରି",
     serviceAreas: "ସେବା କ୍ଷେତ୍ର",
     serviceAreasLead: "ଆମେ ବର୍ତ୍ତମାନ କେବଳ ଓଡ଼ିଶା ଭିତରେ ଯୋଗାଣ କରୁ ।",
     serviceAreasDetail:

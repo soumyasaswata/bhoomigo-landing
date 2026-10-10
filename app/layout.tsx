@@ -8,9 +8,9 @@ const GTM_ID = "GTM-5TNSW4FG";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "BhoomiGo | Construction Materials Delivered in Odisha",
+  title: "BhoomiGo | Construction Materials Delivered in 1 Day in Odisha",
   description:
-    "Stone chips, stone dust & aggregates delivered to your site across Odisha. Direct from crushers, transparent pricing. Call or WhatsApp to order.",
+    "Stone chips, stone dust & aggregates delivered to your site across Odisha within 1 day. Direct from crushers, transparent pricing. Call or WhatsApp to order.",
   keywords: [
     "construction materials Odisha",
     "stone chips Odisha",
@@ -26,14 +26,16 @@ export const metadata: Metadata = {
     "stone chips Aruha",
     "stone dust Aruha",
     "crusher Chandikhole",
+    "1 day delivery construction materials Odisha",
+    "same day stone chips delivery Odisha",
     "BhoomiGo",
   ],
     openGraph: {
     url: SITE_URL,
     siteName: "BhoomiGo",
-    title: "BhoomiGo | Stone Chips & Dust from Chandikhole",
+    title: "BhoomiGo | Stone Chips & Dust from Chandikhole, Delivered in 1 Day",
     description:
-      "High-quality stone chips, stone dust & aggregates sourced directly from Chandikhole & Aruha crushers. Delivered across Odisha. Call to order.",
+      "High-quality stone chips, stone dust & aggregates sourced directly from Chandikhole & Aruha crushers. Delivered across Odisha within 1 day. Call to order.",
     type: "website",
     locale: "en_IN",
     images: [
@@ -47,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BhoomiGo | Construction Materials in Odisha",
+    title: "BhoomiGo | Construction Materials, Delivered in 1 Day",
     description:
-      "Stone chips, stone dust & aggregates delivered in Odisha. WhatsApp or call to order.",
+      "Stone chips, stone dust & aggregates delivered in Odisha within 1 day. WhatsApp or call to order.",
   },
   robots: {
     index: true,
@@ -75,9 +77,10 @@ const localBusinessJsonLd = {
   "@type": "LocalBusiness",
   name: "BhoomiGo",
   description:
-    "Construction materials delivered in Odisha: stone chips, stone dust, aggregates. Direct from crushers, transparent pricing. WhatsApp or call to order.",
+    "Construction materials delivered in Odisha within 1 day: stone chips, stone dust, aggregates. Direct from crushers, transparent pricing. WhatsApp or call to order.",
   url: SITE_URL,
   telephone: "+91-8984516025",
+  email: "hello@bhoomigo.co",
   address: {
     "@type": "PostalAddress",
     streetAddress: "At/Po - Aruha, Block - Dharmasala",
