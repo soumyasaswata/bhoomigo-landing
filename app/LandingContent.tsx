@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { copy, type Lang } from "./copy";
+import { trackContactClick, type ContactMethod } from "@/lib/analytics";
 
 const PHONE = "918984516025";
 const DISPLAY_PHONE = "89845 16025";
@@ -27,6 +28,9 @@ export default function LandingContent({
 } = {}) {
   const [lang, setLang] = useState<Lang>("en");
   const t = copy[lang];
+
+  const track = (method: ContactMethod, placement: string) => () =>
+    trackContactClick({ method, placement, city: location?.city, lang });
 
   const heroTitle = location
     ? lang === "en"
@@ -144,6 +148,7 @@ export default function LandingContent({
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-[#25D366] text-white hover:bg-[#20bd5a] transition shadow-lg"
                 id="hero-whatsapp-btn"
+                onClick={track("whatsapp", "hero")}
               >
                 <WhatsAppIcon className="w-6 h-6" />
                 {t.orderWhatsApp}
@@ -151,6 +156,7 @@ export default function LandingContent({
               <Link
                 href={CALL_URL}
                 id="hero-call-btn"
+                onClick={track("call", "hero")}
                 className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-white text-earth-900 hover:bg-gray-100 transition shadow-lg"
               >
                 <CallIcon className="w-5 h-5" />
@@ -304,15 +310,16 @@ export default function LandingContent({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#25D366] hover:underline"
                 id="footer-whatsapp-link"
+                onClick={track("whatsapp", "footer")}
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 WhatsApp
               </Link>
-              <Link href={CALL_URL} id="footer-call-link" className="inline-flex items-center gap-2 hover:underline">
+              <Link href={CALL_URL} id="footer-call-link" onClick={track("call", "footer")} className="inline-flex items-center gap-2 hover:underline">
                 <CallIcon className="w-5 h-5" />
                 +91 {DISPLAY_PHONE}
               </Link>
-              <Link href={EMAIL_URL} id="footer-email-link" className="inline-flex items-center gap-2 hover:underline">
+              <Link href={EMAIL_URL} id="footer-email-link" onClick={track("email", "footer")} className="inline-flex items-center gap-2 hover:underline">
                 <MailIcon className="w-5 h-5" />
                 {EMAIL}
               </Link>
@@ -335,6 +342,7 @@ export default function LandingContent({
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20bd5a] transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
         aria-label={t.chatWhatsApp}
         id="sticky-whatsapp-btn"
+        onClick={track("whatsapp", "sticky")}
       >
         <WhatsAppIcon className="w-8 h-8" />
       </a>
