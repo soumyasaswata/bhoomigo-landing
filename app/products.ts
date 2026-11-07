@@ -34,6 +34,6 @@ export const products: Product[] = [
     id: "stone_dust",
     pricePerTon: null,
     en: { name: "Stone Dust", use: "Block making, filling, levelling" },
-    odia: { name: "ପଥର ଧୂଳି", use: "ବ୍ଲକ୍ ତିଆରି, ଭରାଟ୍ ଓ ସମତଳ କରିବା ପାଇଁ" },
+    odia: { name: "ଷ୍ଟୋନ୍ ଡଷ୍ଟ", use: "ବ୍ଲକ୍ ତିଆରି, ଭରାଟ୍ ଓ ସମତଳ କରିବା ପାଇଁ" },
   },
 ];
