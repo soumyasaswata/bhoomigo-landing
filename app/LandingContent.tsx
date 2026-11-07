@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { copy, type Lang } from "./copy";
 import { trackContactClick, type ContactMethod } from "@/lib/analytics";
+import { products } from "./products";
 
 const PHONE = "918984516025";
 const DISPLAY_PHONE = "89845 16025";
@@ -50,6 +51,13 @@ export default function LandingContent({
         (match) => match.replace("____", location.city)
       )
     : t.whatsAppTemplate;
+
+  // Same template, with the material pre-filled from a rate card.
+  const productTemplate = (materialName: string) =>
+    whatsAppTemplate.replace(
+      /(Material:|ସାମଗ୍ରୀ:) ____/,
+      (match) => match.replace("____", materialName)
+    );
 
   return (
     <>
@@ -162,6 +170,63 @@ export default function LandingContent({
                 <CallIcon className="w-5 h-5" />
                 {t.callUs}
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Rates */}
+        <section id="rates" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-stone-50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-earth-900 text-center mb-4">
+              {t.ratesTitle}
+            </h2>
+            <p className="text-earth-800/80 text-center max-w-2xl mx-auto mb-10">
+              {t.ratesSub}
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {products.map((p) => {
+                const name = p[lang].name;
+                return (
+                  <article
+                    key={p.id}
+                    className={`relative flex flex-col rounded-2xl bg-white p-5 shadow-sm border ${
+                      p.popular ? "border-amber-500 ring-1 ring-amber-500" : "border-stone-200"
+                    }`}
+                  >
+                    {p.popular && (
+                      <span className="absolute -top-3 left-5 rounded-full bg-amber-500 px-3 py-0.5 text-xs font-semibold text-white">
+                        {t.popularBadge}
+                      </span>
+                    )}
+                    <h3 className="font-semibold text-earth-900 text-lg">{name}</h3>
+                    <p className="text-earth-800/80 text-sm mt-1 mb-4">{p[lang].use}</p>
+                    <div className="mt-auto">
+                      {p.pricePerTon !== null ? (
+                        <>
+                          <p className="text-2xl font-bold text-earth-900">
+                            ₹{p.pricePerTon.toLocaleString("en-IN")}
+                            <span className="text-base font-medium text-earth-800/70">{t.perTon}</span>
+                          </p>
+                          <p className="text-xs text-earth-800/70 mt-1">{t.materialOnly}</p>
+                        </>
+                      ) : (
+                        <p className="text-lg font-semibold text-earth-800/80">{t.askForPrice}</p>
+                      )}
+                      <Link
+                        href={getWhatsAppUrl(productTemplate(name))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`rate-${p.id}-whatsapp-btn`}
+                        onClick={track("whatsapp", `rate_${p.id}`)}
+                        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white hover:bg-[#20bd5a] transition"
+                      >
+                        <WhatsAppIcon className="w-5 h-5" />
+                        {t.getPriceWhatsApp}
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
